@@ -71,23 +71,23 @@ const Dashboard: React.FC = () => {
   }
 
   async function handleDeleteFood(id: number): Promise<void> {
-    Swal.fire({
-      title: 'Você tem certeza que deseja excluir?',
-      text: 'Se excluir, não poderá recuperar este prato',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sim, quero excluir!',
-      cancelButtonText: 'Não, voltar!',
-      reverseButtons: true,
-    }).then(async result => {
-      if (result.isConfirmed) {
-        await api.delete(`/foods/${id}`);
-        setFoods(foods.filter(foodMap => foodMap.id !== id));
-        Swal.fire('Prato excluído!', '', 'error');
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Não excluído', 'Seu registro está salvo 😉', 'success');
-      }
-    });
+    // Swal.fire({
+    //   title: 'Você tem certeza que deseja excluir?',
+    //   text: 'Se excluir, não poderá recuperar este prato',
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonText: 'Sim, quero excluir!',
+    //   cancelButtonText: 'Não, voltar!',
+    //   reverseButtons: true,
+    // }).then(async result => {
+    //   if (result.isConfirmed) {
+    await api.delete(`/foods/${id}`);
+    setFoods(foods.filter(foodMap => foodMap.id !== id));
+    //     Swal.fire('Prato excluído!', '', 'error');
+    //   } else if (result.dismiss === Swal.DismissReason.cancel) {
+    //     Swal.fire('Não excluído', 'Seu registro está salvo 😉', 'success');
+    //   }
+    // });
   }
 
   function toggleModal(): void {
